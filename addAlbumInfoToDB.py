@@ -8,6 +8,10 @@ def add_albuminfo_to_db():
     conn = sqlite3.connect(db_filename)
     c = conn.cursor()
 
+    sql = 'INSERT INTO albums ' \
+          '(album_key, artist_key, name, href_url, image_url_300, release_date, release_date_precision, total_tracks) ' \
+          'values (?,?,?,?,?,?,?,?)'
+
     spotify = create_spotify_connection()
 
     albumdata = spotify.artist_albums(artist_id='2aaLAng2L2aWD2FClzwiep', limit=50, album_type='album')
